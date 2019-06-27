@@ -10,7 +10,14 @@ class ApplicationController < ActionController::Base
 
 
   def segments
-    @url = params["url"]
+    @input = params["url"].to_i
+    if @input == 10 
+      @result = "This is a winning number"
+    elsif @input > 10 
+      @result = "this is low"
+    elsif @input < 10 
+      @result = "This is high"
+    end 
     render 'segment.json.jb'
   end  
 end
